@@ -12,8 +12,7 @@ export default class App extends Component {
   };
 
   onSelectedPerson = id => {
-    this.setState({ personSelected: id });
-    console.log(id);
+    this.setState({ personSelected: id });        
   };
 
 

@@ -10,21 +10,21 @@ class SwapiService {
 
   async getAllPeoples() {
     const res = await this.getResource(`/people/`);
-    return res.results;
+    return res.results.map(this._transformPerson);
   }
 
-  getPerson(id) {
-    const person =  this.getResource(`/people/${id}/`);
+  async getPerson(id) {
+    const person = await this.getResource(`/people/${id}/`);
     return this._transformPerson(person);
   }
 
   async getAllStarships() {
     const res = await this.getResource(`/starships/`);
-    return res.results;
+    return res.results.map(this._transformStarship);
   }
 
-  getStarship(id) {
-    const starship = this.getResource(`/starships/${id}/`);
+  async getStarship(id) {
+    const starship = await this.getResource(`/starships/${id}/`);
     return this._transformStarship(starship); 
   }
 

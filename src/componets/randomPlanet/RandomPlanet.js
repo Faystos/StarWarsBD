@@ -10,8 +10,7 @@ export default class RandomPlanet extends Component {
   state = {
     planet: {},
     load: true,
-    error: false,
-    srcImg: id => `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`,
+    error: false,    
   };  
 
   componentDidMount() {
@@ -19,43 +18,42 @@ export default class RandomPlanet extends Component {
     this.interval = setInterval(this.updatePlanet, 5500);
   }
 
-  onPlanetLoaded = planet => {
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  onPlanetLoaded = planet => {    
     this.setState({ 
       planet,
       load: false,
       error: false
     });
-  }
+  };
 
-  onErrorImg = () => {
-    this.setState({
-      srcImg: (id) => {
-        id = 'big-placeholder';
-        return `https://starwars-visualguide.com/assets/img/${id}.jpg`;
-      }
-    });
-  }
+  onErrorImg = ({ target }) => {
+    target.src = 'https://starwars-visualguide.com/assets/img/big-placeholder.jpg';
+  };  
 
   onError = err => {
     this.setState({ 
       error: true,
       load: false,
     });
-  }
+  };
 
   updatePlanet = () => {
-    const id = Math.floor((Math.random() * 25) + 2);    
+    const id = Math.floor((Math.random() * 18) + 2);    
     this.swapiService.getPlanet(id)
       .then(this.onPlanetLoaded)
       .catch(this.onError);
-  }
+  };
 
   render() {
   const { planet, load, error, srcImg } = this.state;
   const hasData = !(load || error);
   const viewError = error ? <ErrorIndicator /> : null;
   const viewLoader = load ? <Loader /> : null;
-  const viewPlanet = hasData ? <PlanetView planet = { planet } srcImg = { srcImg } onErrorImg = { this.onErrorImg } /> : null;
+  const viewPlanet = hasData ? <PlanetView planet = { planet } srcImg = { srcImg } onErrorImg = { this.onErrorImg } onLoadImg = { this.onLoadImg } /> : null;
     return (
       <div className = "random-planet jumbotron rounded"> 
         { viewError }     
@@ -67,10 +65,10 @@ export default class RandomPlanet extends Component {
 }
 
 const PlanetView = ({ planet, srcImg, onErrorImg }) => {  
-  const { id, planetName, population, rotationPeriod, diameter } = planet;
+  const { id, planetName, population, rotationPeriod, diameter } = planet;  
   return (    
     <React.Fragment>
-      <img className="planet-image" src={ srcImg(id) } onError = { onErrorImg }  alt={`Планета ${planetName}`}/>
+      <img className="planet-image" src={ `https://starwars-visualguide.com/assets/img/planets/${id}.jpg` } onError = { onErrorImg }  alt = { `Планета ${planetName}` }/>
       <div>
         <h4>{ planetName }</h4>
         <ul className="list-group list-group-flush">

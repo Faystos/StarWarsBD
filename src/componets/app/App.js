@@ -1,36 +1,22 @@
 import React, { Component } from 'react';
 import Header from '../header';
 import RandomPlanet from '../randomPlanet';
-import ItemList from '../itemList';
-import PersonDetails from '../personDetails';
+import PersonPage from '../personPage';
+import SwapiService from '../../services/Services';
+
 
 
 export default class App extends Component {
-
-  state = {
-    personSelected: null
-  };
-
-  onSelectedPerson = id => {
-    this.setState({ personSelected: id });        
-  };
-
+  swapiService = new SwapiService();
 
   render () {
-    const { personSelected } = this.state;
+
     return (
-      <div>
+      <React.Fragment>
         <Header />
         <RandomPlanet />
-        <div className="row mb2">
-          <div className="col-md-6">
-            <ItemList onItemSeceted = { this.onSelectedPerson }/>
-          </div>
-          <div className="col-md-6">
-            <PersonDetails personId = { personSelected }/>
-          </div>
-        </div>
-      </div>
+        <PersonPage getData = {this.swapiService.getAllPeoples}/>        
+      </React.Fragment>
     );
   }
   

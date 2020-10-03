@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
-import SwapiService from '../../services/Services';
+
 import Loader from '../loader';
 import ErrorIndicator from '../errorIndicator';
 import './itemList.css';
 
 export default class ItemList extends Component {
-  swapiService = new SwapiService();
+  
 
   state = {
-    persons: null,
+    itemList: null,
     load: true,
     error: false,
   }
 
   componentDidMount() {
-   this.onLoadPersons();    
+    const { getData } = this.props;
+    this.onLoadPersons(getData);    
   }
 
-  onLoadPersons() {
-    this.swapiService.getAllPeoples()
-      .then(persons => this.setState({ persons, load: false }))
+  onLoadPersons(data) {    
+    data()
+      .then(itemList => this.setState({ itemList, load: false }))
       .catch(this.onError);
   }
 
@@ -31,21 +32,23 @@ export default class ItemList extends Component {
   }
 
   renderItems(arr) {
-    return arr.map(({ id, name }) => {      
+    return arr.map((item) => {
+      const { id } = item;
+      const label = this.props.renderItem(item);
       return (
         <li className = "list-group-item" key = { id } onClick = { () => this.props.onItemSeceted(id) }>
-          { name }
+          { label }
         </li>
       );
     });
   }
 
   render() {
-    const { persons, error, load } = this.state;    
+    const { itemList, error, load } = this.state;    
     const hasData = !(load || error);
     const viewError = error ? <ErrorIndicator /> : null;
     const viewLoader = load ? <Loader /> : null;
-    const viewPersons = hasData ? this.renderItems(persons) : null;
+    const viewPersons = hasData ? this.renderItems(itemList) : null;
 
     return (
       <ul className="item-list list-group">

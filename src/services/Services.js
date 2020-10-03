@@ -1,39 +1,39 @@
-class SwapiService {
+export default class SwapiService {
 
   _apiBase = 'https://swapi.dev/api';
 
-  async getResource(url) {
+  getResource = async (url) => {
     const res = await fetch(`${this._apiBase}${url}`);
     if(!res.ok) throw new Error(`Ошибка загрузки ${url}, статус соединения ${res.status}.`);
     return await res.json();
   }
 
-  async getAllPeoples() {
+  getAllPeoples = async () => {
     const res = await this.getResource(`/people/`);
     return res.results.map(this._transformPerson);
   }
 
-  async getPerson(id) {
+  getPerson = async (id) => {
     const person = await this.getResource(`/people/${id}/`);
     return this._transformPerson(person);
   }
 
-  async getAllStarships() {
+  getAllStarships = async () => {
     const res = await this.getResource(`/starships/`);
     return res.results.map(this._transformStarship);
   }
 
-  async getStarship(id) {
+  getStarship = async id => {
     const starship = await this.getResource(`/starships/${id}/`);
     return this._transformStarship(starship); 
   }
 
-  async getAllPlanets() {
+  getAllPlanets = async () => {
     const res = await this.getResource(`/planets/`);
     return res.results.map(this._transformPlanet);
   }
 
-  async getPlanet(id) {
+  getPlanet = async id => {
     const planet = await this.getResource(`/planets/${id}/`);
     return this._transformPlanet(planet);
   }
@@ -43,17 +43,17 @@ class SwapiService {
     return item.url.match(idRegExp)[1];    
   }
 
-  _transformPlanet = (planet) => {    
+  _transformPlanet = planet => {    
     return {
       id: this._extractId(planet),    
-      planetName: planet.name,
+      name: planet.name,
       population: planet.population,
       rotationPeriod: planet.rotation_period,
       diameter: planet.diameter        
     }
   }
 
-  _transformStarship = (starship) => {
+  _transformStarship = starship => {
     return {
       id: this._extractId(starship),
       name: starship.name,
@@ -67,7 +67,7 @@ class SwapiService {
     }
   };
 
-  _transformPerson = (person) => {
+  _transformPerson = person => {
     return {
       id: this._extractId(person),
       name: person.name,
@@ -77,6 +77,3 @@ class SwapiService {
     }
   }
 }
-
-export default SwapiService;
-

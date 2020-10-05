@@ -14,8 +14,8 @@ export default class ItemList extends Component {
   }
 
   componentDidMount() {
-    const { getData } = this.props;
-    this.onLoadPersons(getData);    
+    const { getDataItems } = this.props;
+    this.onLoadPersons(getDataItems);    
   }
 
   onLoadPersons(data) {    

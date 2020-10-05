@@ -3,35 +3,35 @@ import ItemList from '../itemList';
 import ItemDetails from '../itemDetails';
 import Row from '../row';
 
-export default class PersonPage extends Component  {
+export default class StarshipPage extends Component {
 
   state = {
-    personSelected: 3
+    starshipSelected: 3
   };
 
-  onSelectedPerson = id => {
-    this.setState({ personSelected: id });        
+  onSelectedStarship = id => {
+    this.setState({ starshipSelected: id });        
   };
 
   render() {
-    const { personSelected } = this.state;
+    const { starshipSelected } = this.state;
     const { getDataItems, getDataItem, getImg } = this.props;
 
     const itemList = (
       <ItemList
-        onItemSeceted = { this.onSelectedPerson }
+        onItemSeceted = { this.onSelectedStarship }
         getDataItems = { getDataItems } 
-        renderItem = {({ name, gender, birthYear }) => `${name} (${gender}, ${birthYear})`}
+        renderItem = {({ name}) => `${name}`}
       />
     );
 
     const personDetails = (
-      <ItemDetails itemId = { personSelected } getDataItem = { getDataItem } getImg = { getImg }/>
+      <ItemDetails itemId = { starshipSelected } getDataItem = { getDataItem } getImg = { getImg }/>
     );
     return(
       <Row 
         left = { itemList }
         rigth = { personDetails } />
     );
-  }  
-};
+  }
+}

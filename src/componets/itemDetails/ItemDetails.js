@@ -3,13 +3,14 @@ import SwapiService from '../../services/Services';
 import Loader from '../loader';
 import ErrorIndicator from '../errorIndicator';
 
-import './personDetails.css';
+import './itemDetails.css';
 
-export default class PersonDetails extends Component {
+export default class ItemDetails extends Component {
   swapiService = new SwapiService();
 
   state = {
-    person: null,
+    item: null,
+    img: null,
     load: true,
     error: false   
   };
@@ -19,14 +20,14 @@ export default class PersonDetails extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.personId !== prevProps.personId) this.updatePerson(); 
+    if(this.props.itemId !== prevProps.itemId) this.updatePerson(); 
   }
 
   updatePerson() {
-    const { personId } = this.props;
-    if (!personId) return;
-    this.swapiService.getPerson(personId)
-    .then(person => this.setState({ person, load: false}))
+    const { itemId, getDataItem, getImg } = this.props;
+    if (!itemId) return;
+    getDataItem(itemId)
+    .then(item => this.setState({ item, img: getImg(item), load: false}))
     .catch(this.onError);
   } 
   
@@ -38,12 +39,12 @@ export default class PersonDetails extends Component {
   }
 
   render() {
-    const { person, load, error } = this.state;
-    if (!person) return null;
+    const { item, img, load, error } = this.state;
+    if (!item) return null;
     const hasData = !(load || error);
     const viewError = error ? <ErrorIndicator/> : null;
     const viewLoader = load ? <Loader/> : null;
-    const viewPerson = hasData ? <Person person = { person }/> :null;
+    const viewPerson = hasData ? <Person item = { item } img = { img }/> :null;
     
     return (
       <div className="person-details card">
@@ -55,11 +56,11 @@ export default class PersonDetails extends Component {
   }
 }
 
-const Person = ({ person}) => {  
-  const { id, name, gender, birthYear, eyeColor } = person;
+const Person = ({ item, img}) => {  
+  const { id, name, gender, birthYear, eyeColor } = item;
   return (
     <React.Fragment>
-      <img className="person-image" src = {`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} alt=",kf" />
+      <img className="person-image" src = { img } alt={ name } />
       <div className="card-body">
         <h4>{name}</h4>
         <ul className="list-group list-group-flush">

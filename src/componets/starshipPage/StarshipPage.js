@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ItemList from '../itemList';
-import ItemDetails from '../itemDetails';
+import ItemDetails, {Record} from '../itemDetails';
 import Row from '../row';
 
 export default class StarshipPage extends Component {
@@ -21,12 +21,16 @@ export default class StarshipPage extends Component {
       <ItemList
         onItemSeceted = { this.onSelectedStarship }
         getDataItems = { getDataItems } 
-        renderItem = {({ name}) => `${name}`}
+        renderItem = {({ name, costInCredits, manufacturer}) => `${name} (${costInCredits}credits, ${manufacturer})`}
       />
     );
 
     const personDetails = (
-      <ItemDetails itemId = { starshipSelected } getDataItem = { getDataItem } getImg = { getImg }/>
+      <ItemDetails itemId = { starshipSelected } getDataItem = { getDataItem } getImg = { getImg }>
+        <Record field="model" label="Model"/>
+        <Record field="costInCredits" label="Cost"/>
+        <Record field="length" label="Length"/>
+      </ItemDetails>
     );
     return(
       <Row 

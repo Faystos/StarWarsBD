@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ItemList from '../itemList';
-import ItemDetails from '../itemDetails';
+import ItemDetails, { Record } from '../itemDetails';
 import Row from '../row';
 
 export default class PersonPage extends Component  {
@@ -26,7 +26,11 @@ export default class PersonPage extends Component  {
     );
 
     const personDetails = (
-      <ItemDetails itemId = { personSelected } getDataItem = { getDataItem } getImg = { getImg }/>
+      <ItemDetails itemId = { personSelected } getDataItem = { getDataItem } getImg = { getImg }>
+        <Record field="gender" label="Gender"/>
+        <Record field="birthYear" label="Birth Year"/>
+        <Record field="eyeColor" label="Eye Color"/>
+      </ItemDetails>
     );
     return(
       <Row 

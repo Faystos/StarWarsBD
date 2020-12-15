@@ -1,9 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, Children, cloneElement } from 'react';
 import SwapiService from '../../services/Services';
 import Loader from '../loader';
 import ErrorIndicator from '../errorIndicator';
 
 import './itemDetails.css';
+
+const Record = ({item, field, label}) => {
+  return (
+    <li className="list-group-item">
+      <span className="term">{ label }:</span>
+      <span>{ item[field] }</span>
+    </li>
+  );  
+}
+
+export {
+  Record
+};
 
 export default class ItemDetails extends Component {
   swapiService = new SwapiService();
@@ -42,24 +55,41 @@ export default class ItemDetails extends Component {
     const { item, img, load, error } = this.state;
     if (!item) return null;
     const hasData = !(load || error);
+    const itemList = (
+      <>
+        <img className="person-image" src = { img } alt={ item.name } />
+        <div className="card-body">
+          <h4>{item.name}</h4>
+          <ul className="list-group list-group-flush">
+            {
+              Children.map(this.props.children, child => cloneElement(child, {item}))
+            }
+          </ul>
+        </div>
+      </>
+    );
     const viewError = error ? <ErrorIndicator/> : null;
     const viewLoader = load ? <Loader/> : null;
-    const viewPerson = hasData ? <Person item = { item } img = { img }/> :null;
+    const viewItem = hasData ? itemList :null;
     
     return (
       <div className="person-details card">
         { viewError }
         { viewLoader }
-        { viewPerson }
+        { viewItem }
       </div>
     )
   }
 }
 
+
+
+
+/*
 const Person = ({ item, img}) => {  
   const { id, name, gender, birthYear, eyeColor } = item;
   return (
-    <React.Fragment>
+    <>
       <img className="person-image" src = { img } alt={ name } />
       <div className="card-body">
         <h4>{name}</h4>
@@ -78,6 +108,9 @@ const Person = ({ item, img}) => {
           </li>
         </ul>
       </div>
-    </React.Fragment>
+    </>
   );
 }
+
+<Person item = { item } img = { img }/>
+*/

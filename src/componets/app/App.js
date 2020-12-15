@@ -14,14 +14,14 @@ export default class App extends Component {
   render () {
 
     return (
-      <React.Fragment>
+      <>
         <Header />
         <RandomPlanet />
         <PersonPage getDataItems = {this.swapiService.getAllPeoples} getDataItem = {this.swapiService.getPerson} getImg = {this.swapiService.getPersonImg}/> 
         <hr />       
         <StarshipPage getDataItems = {this.swapiService.getAllStarships} getDataItem = {this.swapiService.getStarship} getImg = {this.swapiService.getStarshipImg}/>     
         <hr />       
-      </React.Fragment>
+      </>
     );
   }
   

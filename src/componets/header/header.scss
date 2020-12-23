@@ -1,0 +1,30 @@
+.head {
+  width: 100%;
+  
+  z-index: 2;
+
+  .head__wpap {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  a {    
+    svg {
+      transition: all 0.3s;
+      height: 100%;
+    }
+
+    &:hover {
+      svg {
+        fill: #cc0606;
+      } 
+    }
+
+    &:active {
+      svg {
+        fill: #0638cc;
+      } 
+    }    
+  } 
+}

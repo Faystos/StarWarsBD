@@ -17,9 +17,9 @@ export default class App extends Component {
           <Router>
             <Header />
             <RandomPlanet />
-            <Route path='/people/' component={ PersonPage } />
+            {/* <Route path='/people/' component={ PersonPage } />
             <Route path='/starships/' component={ StarshipPage } />
-            <Route path='/planets/' component={ PlanetPage }/>
+            <Route path='/planets/' component={ PlanetPage }/> */}
           </Router>            
         </SwapiServiceProvider>
       </>

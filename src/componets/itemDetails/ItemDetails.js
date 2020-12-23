@@ -2,7 +2,7 @@ import React, { Component, Children, cloneElement } from 'react';
 import Loader from '../loader';
 import ErrorIndicator from '../errorIndicator';
 
-import './itemDetails.css';
+import './itemDetails.scss';
 
 const Record = ({item, field, label}) => {
   return (

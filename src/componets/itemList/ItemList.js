@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import './itemList.css';
+import './itemList.scss';
 
 const ItemList = (props) => {
 

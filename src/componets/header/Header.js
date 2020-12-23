@@ -1,27 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './header.css';
+import SvgIcon from '../svgIcon';
+import './header.scss';
 
-const Header = () => {
+const Header = () => {  
   return (
-    <div className="header d-flex">
-      <h3>
-        <Link to="/">
-          StarDB
+    <section className='head' >
+      <div className='head__wpap'>        
+        <Link to='/'>
+          <SvgIcon  name='logo' color='#FFC500' size='100'/>
         </Link>
-      </h3>
-      <ul className="d-flex">
-        <li>
-          <Link to="/people/">People</Link>
-        </li>
-        <li>
-          <Link to="/planets/">Planets</Link>
-        </li>
-        <li>
-          <Link to="/starships/">Starships</Link>
-        </li>
-      </ul>
-    </div>
+        
+        {/* <ul className="d-flex">
+          <li>
+            <Link to="/people/">People</Link>
+          </li>
+          <li>
+            <Link to="/planets/">Planets</Link>
+          </li>
+          <li>
+            <Link to="/starships/">Starships</Link>
+          </li>
+        </ul> */}
+      </div>
+    </section>
+    
   );
 };
 

@@ -1,5 +1,4 @@
 import React, { Component, Children, cloneElement } from 'react';
-import SwapiService from '../../services/Services';
 import Loader from '../loader';
 import ErrorIndicator from '../errorIndicator';
 
@@ -18,8 +17,7 @@ export {
   Record
 };
 
-export default class ItemDetails extends Component {
-  swapiService = new SwapiService();
+export default class ItemDetails extends Component {  
 
   state = {
     item: null,
@@ -51,13 +49,17 @@ export default class ItemDetails extends Component {
     });
   }
 
+  onErrorImg = ({ target }) => {
+    target.src = 'https://starwars-visualguide.com/assets/img/big-placeholder.jpg';
+  };  
+
   render() {
     const { item, img, load, error } = this.state;
     if (!item) return null;
     const hasData = !(load || error);
     const itemList = (
       <>
-        <img className="person-image" src = { img } alt={ item.name } />
+        <img className="person-image" src = { img } onError = { this.onErrorImg } alt={ item.name } />
         <div className="card-body">
           <h4>{item.name}</h4>
           <ul className="list-group list-group-flush">
@@ -81,36 +83,3 @@ export default class ItemDetails extends Component {
     )
   }
 }
-
-
-
-
-/*
-const Person = ({ item, img}) => {  
-  const { id, name, gender, birthYear, eyeColor } = item;
-  return (
-    <>
-      <img className="person-image" src = { img } alt={ name } />
-      <div className="card-body">
-        <h4>{name}</h4>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item">
-            <span className="term">Gender</span>
-            <span>{gender}</span>
-          </li>
-          <li className="list-group-item">
-            <span className="term">Birth Year</span>
-            <span>{birthYear}</span>
-          </li>
-          <li className="list-group-item">
-            <span className="term">Eye Color</span>
-            <span>{eyeColor}</span>
-          </li>
-        </ul>
-      </div>
-    </>
-  );
-}
-
-<Person item = { item } img = { img }/>
-*/

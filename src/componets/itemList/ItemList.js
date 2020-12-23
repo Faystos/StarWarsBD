@@ -1,61 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import Loader from '../loader';
-import ErrorIndicator from '../errorIndicator';
+
 import './itemList.css';
 
-export default class ItemList extends Component {
-  
+const ItemList = (props) => {
 
-  state = {
-    itemList: null,
-    load: true,
-    error: false,
-  }
+  const {data, onItemSeceted, children: renderLabel} = props;
 
-  componentDidMount() {
-    const { getDataItems } = this.props;
-    this.onLoadPersons(getDataItems);    
-  }
-
-  onLoadPersons(data) {    
-    data()
-      .then(itemList => this.setState({ itemList, load: false }))
-      .catch(this.onError);
-  }
-
-  onError = err => {
-    this.setState({ 
-      error: true,
-      load: false,
-    });
-  }
-
-  renderItems(arr) {
-    return arr.map((item) => {
-      const { id } = item;
-      const label = this.props.renderItem(item);
-      return (
-        <li className = "list-group-item" key = { id } onClick = { () => this.props.onItemSeceted(id) }>
-          { label }
-        </li>
-      );
-    });
-  }
-
-  render() {
-    const { itemList, error, load } = this.state;    
-    const hasData = !(load || error);
-    const viewError = error ? <ErrorIndicator /> : null;
-    const viewLoader = load ? <Loader /> : null;
-    const viewPersons = hasData ? this.renderItems(itemList) : null;
+  const items = data.map(item => {
+    const { id } = item;
+    const label = renderLabel(item);
 
     return (
-      <ul className="item-list list-group">
-        { viewError }
-        { viewLoader }
-        { viewPersons }
-      </ul>
+      <li className = "list-group-item" key = { id } onClick = { () => onItemSeceted(id) }>
+          { label }
+      </li>
     );
-  }
+  });
+
+  return (
+    <ul className="item-list list-group">
+        {items}
+    </ul>
+  );  
 }
+
+export default ItemList;

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import Header from '../header';
 import RandomPlanet from '../randomPlanet';
-import PersonPage from '../personPage';
-import StarshipPage from '../starshipPage';
 import SwapiService from '../../services/Services';
-
-
-
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { PersonPage, StarshipPage, PlanetPage } from '../pages';
+import { SwapiServiceProvider } from '../swapiServiceContext';
 
 export default class App extends Component {
   swapiService = new SwapiService();
@@ -15,15 +13,16 @@ export default class App extends Component {
 
     return (
       <>
-        <Header />
-        <RandomPlanet />
-        <PersonPage getDataItems = {this.swapiService.getAllPeoples} getDataItem = {this.swapiService.getPerson} getImg = {this.swapiService.getPersonImg}/> 
-        <hr />       
-        <StarshipPage getDataItems = {this.swapiService.getAllStarships} getDataItem = {this.swapiService.getStarship} getImg = {this.swapiService.getStarshipImg}/>     
-        <hr />       
+        <SwapiServiceProvider value={ this.swapiService }>
+          <Router>
+            <Header />
+            <RandomPlanet />
+            <Route path='/people/' component={ PersonPage } />
+            <Route path='/starships/' component={ StarshipPage } />
+            <Route path='/planets/' component={ PlanetPage }/>
+          </Router>            
+        </SwapiServiceProvider>
       </>
     );
-  }
-  
+  }  
 }
-

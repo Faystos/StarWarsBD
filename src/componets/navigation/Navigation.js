@@ -11,13 +11,13 @@ const Navigation = () => {
       <div className="navigation__wrap">
         <ul >
           <li>
-            <Link to="/people/"><NavigationImage imgUrl={people} altDesc={`персонажей`}/><p>Персонажи</p></Link>
+            <Link to="/StarWarsBD/people/"><NavigationImage imgUrl={people} altDesc={`персонажей`}/><p>Персонажи</p></Link>
           </li>
           <li>
-            <Link to="/planets/"><NavigationImage imgUrl={planet} altDesc={`планет`}/><p>Планеты</p></Link>
+            <Link to="/StarWarsBD/planets/"><NavigationImage imgUrl={planet} altDesc={`планет`}/><p>Планеты</p></Link>
           </li>
           <li>
-            <Link to="/starships/"><NavigationImage imgUrl={starShips} altDesc={`космических кораблей`}/><p>Звёздные корабли</p></Link>
+            <Link to="/StarWarsBD/starships/"><NavigationImage imgUrl={starShips} altDesc={`космических кораблей`}/><p>Звёздные корабли</p></Link>
           </li>
         </ul>
       </div>

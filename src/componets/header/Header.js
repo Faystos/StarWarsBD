@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <section className='head' >
       <div className='head__wpap'>        
-        <Link to='/'>
+        <Link to='/StarWarsBD/'>
           <SvgIcon  name='logo' color='#FFC500' size='100'/>
         </Link>       
       </div>

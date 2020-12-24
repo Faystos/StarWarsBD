@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a7cef053e6c5bc6363ec3a6baa6b5f8f",
+    "revision": "661a4c20c681fd4371da3793b8d58629",
     "url": "/StarWarsBD/index.html"
   },
   {
-    "revision": "682dddd6b7045e793aa8",
+    "revision": "1274b06da6c56669985f",
     "url": "/StarWarsBD/static/css/main.44ae125c.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/StarWarsBD/static/js/2.1c4dd06c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "682dddd6b7045e793aa8",
-    "url": "/StarWarsBD/static/js/main.52ca04f1.chunk.js"
+    "revision": "1274b06da6c56669985f",
+    "url": "/StarWarsBD/static/js/main.ad9ed433.chunk.js"
   },
   {
     "revision": "496ad5b4de6ac9853fc2",

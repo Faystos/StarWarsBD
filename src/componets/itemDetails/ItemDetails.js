@@ -2,12 +2,10 @@ import React, { Component, Children, cloneElement } from 'react';
 import Loader from '../loader';
 import ErrorIndicator from '../errorIndicator';
 
-import './itemDetails.scss';
-
 const Record = ({item, field, label}) => {
   return (
     <li className="list-group-item">
-      <span className="term">{ label }:</span>
+      <span className="term">{ label }: </span>
       <span>{ item[field] }</span>
     </li>
   );  
@@ -59,10 +57,10 @@ export default class ItemDetails extends Component {
     const hasData = !(load || error);
     const itemList = (
       <>
-        <img className="person-image" src = { img } onError = { this.onErrorImg } alt={ item.name } />
-        <div className="card-body">
+        <img className="details_card_image" src = { img } onError = { this.onErrorImg } alt={ item.name } />
+        <div className="details_card__description">
           <h4>{item.name}</h4>
-          <ul className="list-group list-group-flush">
+          <ul>
             {
               Children.map(this.props.children, child => cloneElement(child, {item}))
             }
@@ -75,7 +73,7 @@ export default class ItemDetails extends Component {
     const viewItem = hasData ? itemList :null;
     
     return (
-      <div className="person-details card">
+      <div className="details_card">
         { viewError }
         { viewLoader }
         { viewItem }

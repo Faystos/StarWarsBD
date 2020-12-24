@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import SwapiService from '../../services/Services';
 import Loader from '../loader';
 import ErrorIndicator from '../errorIndicator';
-import './randomPlanet.scss';
 
 export default class RandomPlanet extends Component {
   swapiService = new SwapiService();
@@ -73,17 +72,17 @@ const PlanetView = ({ planet, srcImg, onErrorImg }) => {
         <img src={ `https://starwars-visualguide.com/assets/img/planets/${id}.jpg` } onError = { onErrorImg }  alt = { `Планета ${name}` }/>
         <div className='random-planet__planet_description'>
           <h4>{ name }</h4>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              <span className="term">Население: </span>
+          <ul>
+            <li>
+              <span>Население: </span>
               <span>{ population }</span>
             </li>
-            <li className="list-group-item">
-              <span className="term">Период вращения: </span>
+            <li>
+              <span>Период вращения: </span>
               <span>{ rotationPeriod }</span>
             </li>
-            <li className="list-group-item">
-              <span className="term">Диаметр: </span>
+            <li>
+              <span>Диаметр: </span>
               <span>{ diameter }</span>
             </li>
           </ul>

@@ -6,7 +6,6 @@ import Row from '../row';
 import { SwapiServiceConsumer } from '../swapiServiceContext';
 
 export default class StarshipPage extends Component {
-
   state = {
     starshipSelected: null
   };
@@ -36,9 +35,9 @@ export default class StarshipPage extends Component {
         {({getStarship, getStarshipImg}) => {
           return (
             <ItemDetails itemId = { starshipSelected } getDataItem = { getStarship } getImg = { getStarshipImg }>
-              <Record field="model" label="Model"/>
-              <Record field="costInCredits" label="Cost"/>
-              <Record field="length" label="Length"/>
+              <Record field="model" label="Модель"/>
+              <Record field="costInCredits" label="Цена"/>
+              <Record field="length" label="Длина"/>
             </ItemDetails>
           );
         }}

@@ -1,8 +1,5 @@
 import React from 'react';
 
-
-import './itemList.scss';
-
 const ItemList = (props) => {
 
   const {data, onItemSeceted, children: renderLabel} = props;
@@ -12,14 +9,14 @@ const ItemList = (props) => {
     const label = renderLabel(item);
 
     return (
-      <li className = "list-group-item" key = { id } onClick = { () => onItemSeceted(id) }>
+      <li className = "items-list-item" key = { id } onClick = { () => onItemSeceted(id) }>
           { label }
       </li>
     );
   });
 
   return (
-    <ul className="item-list list-group">
+    <ul className="items-list">
         {items}
     </ul>
   );  

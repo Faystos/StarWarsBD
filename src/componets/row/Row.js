@@ -2,10 +2,12 @@ import React from 'react';
 
 const Row = ({ left, rigth }) => {
   return (
-    <div className="row mb2">
-      <div className="col-md-6">{left}</div>
-      <div className="col-md-6">{rigth}</div>
-    </div>
+    <section className='row'>
+      <div className='row__wrap'>
+        <div className='row__col_left'>{left}</div>
+        <div className="row__col_rigth">{rigth}</div>
+      </div>      
+    </section>
   );
 
 };

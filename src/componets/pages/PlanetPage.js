@@ -6,7 +6,6 @@ import Row from '../row';
 import { SwapiServiceConsumer } from '../swapiServiceContext';
 
 export default class PlanetPage extends Component {
-
   state = {
     planetSelected: null
   };
@@ -36,9 +35,9 @@ export default class PlanetPage extends Component {
         {({ getPlanet, getPlanetImg }) => {
           return (
             <ItemDetails itemId = { planetSelected } getDataItem = { getPlanet } getImg = { getPlanetImg }>
-              <Record field="population" label="Population"/>
-              <Record field="rotationPeriod" label="Rotation Period"/>
-              <Record field="diameter" label="Diameter"/>
+              <Record field="population" label="Население"/>
+              <Record field="rotationPeriod" label="Период вращения"/>
+              <Record field="diameter" label="Диаметр"/>
             </ItemDetails>
           );          
         }}

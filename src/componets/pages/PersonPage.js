@@ -35,9 +35,9 @@ export default class PersonPage extends Component  {
         {({getPerson, getPersonImg}) => {
           return (
             <ItemDetails itemId = { personSelected } getDataItem = { getPerson } getImg = { getPersonImg }>
-              <Record field="gender" label="Gender"/>
-              <Record field="birthYear" label="Birth Year"/>
-              <Record field="eyeColor" label="Eye Color"/>
+              <Record field="gender" label="Пол"/>
+              <Record field="birthYear" label="Год рождения"/>
+              <Record field="eyeColor" label="Цвет глаз"/>
             </ItemDetails>
           );          
         }}

@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/StarWarsDB/static/css/main.44ae125c.chunk.css",
+    "main.js": "/StarWarsDB/static/js/main.52ca04f1.chunk.js",
+    "main.js.map": "/StarWarsDB/static/js/main.52ca04f1.chunk.js.map",
+    "runtime-main.js": "/StarWarsDB/static/js/runtime-main.3ab0e05c.js",
+    "runtime-main.js.map": "/StarWarsDB/static/js/runtime-main.3ab0e05c.js.map",
+    "static/js/2.1c4dd06c.chunk.js": "/StarWarsDB/static/js/2.1c4dd06c.chunk.js",
+    "static/js/2.1c4dd06c.chunk.js.map": "/StarWarsDB/static/js/2.1c4dd06c.chunk.js.map",
+    "index.html": "/StarWarsDB/index.html",
+    "precache-manifest.4979762cf3f7691105168f1ce8b22d02.js": "/StarWarsDB/precache-manifest.4979762cf3f7691105168f1ce8b22d02.js",
+    "service-worker.js": "/StarWarsDB/service-worker.js",
+    "static/css/main.44ae125c.chunk.css.map": "/StarWarsDB/static/css/main.44ae125c.chunk.css.map",
+    "static/js/2.1c4dd06c.chunk.js.LICENSE.txt": "/StarWarsDB/static/js/2.1c4dd06c.chunk.js.LICENSE.txt",
+    "static/media/people.png": "/StarWarsDB/static/media/people.273b84b0.png",
+    "static/media/planet.png": "/StarWarsDB/static/media/planet.ee27eebe.png",
+    "static/media/sprite.svg": "/StarWarsDB/static/media/sprite.1c502e0d.svg",
+    "static/media/starShips.png": "/StarWarsDB/static/media/starShips.22342cf8.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3ab0e05c.js",
+    "static/js/2.1c4dd06c.chunk.js",
+    "static/css/main.44ae125c.chunk.css",
+    "static/js/main.52ca04f1.chunk.js"
+  ]
+}
